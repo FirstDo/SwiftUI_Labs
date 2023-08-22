@@ -14,6 +14,8 @@
 		5BC09DFF2A946AA800A26EF9 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC09DFE2A946AA800A26EF9 /* TabBar.swift */; };
 		5BC09E022A947D5300A26EF9 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 5BC09E012A947D5300A26EF9 /* ComposableArchitecture */; };
 		5BC09E052A947D5F00A26EF9 /* TCACoordinators in Frameworks */ = {isa = PBXBuildFile; productRef = 5BC09E042A947D5F00A26EF9 /* TCACoordinators */; };
+		5BC09E072A94829300A26EF9 /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC09E062A94829300A26EF9 /* Notification+.swift */; };
+		5BC09E0A2A94849100A26EF9 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC09E092A94849100A26EF9 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		5BC09DF12A94539700A26EF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BC09DF42A94539700A26EF9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5BC09DFE2A946AA800A26EF9 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		5BC09E062A94829300A26EF9 /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
+		5BC09E092A94849100A26EF9 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +61,10 @@
 		5BC09DEC2A94539700A26EF9 /* CustomTabBar */ = {
 			isa = PBXGroup;
 			children = (
-				5BC09DFD2A94574A00A26EF9 /* Tab */,
 				5BC09DED2A94539700A26EF9 /* MyApp.swift */,
+				5BC09E092A94849100A26EF9 /* MainView.swift */,
+				5BC09DFD2A94574A00A26EF9 /* Tab */,
+				5BC09E082A94847200A26EF9 /* Helper */,
 				5BC09DF12A94539700A26EF9 /* Assets.xcassets */,
 				5BC09DF32A94539700A26EF9 /* Preview Content */,
 			);
@@ -76,10 +82,18 @@
 		5BC09DFD2A94574A00A26EF9 /* Tab */ = {
 			isa = PBXGroup;
 			children = (
-				5BC09DEF2A94539700A26EF9 /* MainTabView.swift */,
 				5BC09DFE2A946AA800A26EF9 /* TabBar.swift */,
+				5BC09DEF2A94539700A26EF9 /* MainTabView.swift */,
 			);
 			path = Tab;
+			sourceTree = "<group>";
+		};
+		5BC09E082A94847200A26EF9 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				5BC09E062A94829300A26EF9 /* Notification+.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,8 +174,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BC09E072A94829300A26EF9 /* Notification+.swift in Sources */,
 				5BC09DF02A94539700A26EF9 /* MainTabView.swift in Sources */,
 				5BC09DEE2A94539700A26EF9 /* MyApp.swift in Sources */,
+				5BC09E0A2A94849100A26EF9 /* MainView.swift in Sources */,
 				5BC09DFF2A946AA800A26EF9 /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

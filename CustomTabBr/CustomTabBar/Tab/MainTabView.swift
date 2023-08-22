@@ -1,7 +1,9 @@
 import SwiftUI
+import Foundation
 
 struct MainTabView: View {
     @State private var selection: TabItem = .home
+    @State private var isShowTab = true
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -19,24 +21,21 @@ struct MainTabView: View {
                     .tabItem { Label("테스트", systemImage: "swift") }
             }
             
-            TabBar(selectedItem: $selection)
-                .padding(20)
+            if isShowTab {
+                TabBar(selectedItem: $selection)
+                    .padding(20)
+                    .transition(.move(edge: .bottom))
+                    .animation(.spring(response: 0.2))
+                    .zIndex(1)
+            }
+        }
+        .onReceive(NotiManager.publisher(for: Noti.hideTap)) { _ in
+            isShowTab = false
+            
+        }
+        .onReceive(NotiManager.publisher(for: Noti.showTap)) { _ in
+            isShowTab = true
         }
         .ignoresSafeArea(.all, edges: .bottom)
-    }
-}
-
-struct MainView: View {
-    let color: Color
-    
-    var body: some View {
-        Rectangle().fill(color)
-            .ignoresSafeArea()
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainTabView()
     }
 }
