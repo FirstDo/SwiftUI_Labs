@@ -8,6 +8,9 @@ struct MyApp: App {
     var body: some Scene {
         WindowGroup {
             MainTabView()
+                .onAppear {
+                    UITabBar.appearance().isHidden = true
+                }
         }
     }
 }

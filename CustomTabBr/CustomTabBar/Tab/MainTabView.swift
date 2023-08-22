@@ -8,12 +8,15 @@ struct MainTabView: View {
             TabView(selection: $selection) {
                 MainView(color: .red)
                     .tag(TabItem.home)
+                    .tabItem { Label("테스트", systemImage: "swift") }
                 
                 MainView(color: .blue)
                     .tag(TabItem.apple)
+                    .tabItem { Label("테스트", systemImage: "swift") }
                 
                 MainView(color: .green)
                     .tag(TabItem.swift)
+                    .tabItem { Label("테스트", systemImage: "swift") }
             }
             
             TabBar(selectedItem: $selection)
