@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Scrumdinger/Scrumdinger.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:SwiftUI_AppleTutorial/SwiftUI_AppleTutorial.xcodeproj">
    </FileRef>
    <FileRef
