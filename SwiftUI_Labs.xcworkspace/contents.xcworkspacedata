@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:SwiftUI_AppleTutorial/SwiftUI_AppleTutorial.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:/Users/ls-mac-00213/Desktop/study/SwiftUI_Labs/CustomTabBr/CustomTabBar.xcodeproj">
    </FileRef>
 </Workspace>
