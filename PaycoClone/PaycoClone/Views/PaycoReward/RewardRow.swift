@@ -11,8 +11,7 @@ struct RewardRow: View {
       Image(systemName: "chevron.forward")
         .foregroundColor(.secondary)
     }
-    .padding(20)
-    .background(RoundedRectangle(cornerRadius: 20).fill(.secondary.opacity(0.1)))
+    .paycoBackground()
   }
 }
 

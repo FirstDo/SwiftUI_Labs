@@ -2,7 +2,7 @@ import SwiftUI
 
 struct HeaderView: View {
   var body: some View {
-    HStack {
+    HStack(spacing: 15) {
       Text("포인트")
         .font(.largeTitle)
         .bold()

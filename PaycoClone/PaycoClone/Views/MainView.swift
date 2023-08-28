@@ -12,8 +12,10 @@ struct MainView: View {
           .padding(.horizontal, -20)
         PointBenefitView()
         RewardRow()
-        BrandOfMonthView() // TODO
+        BrandOfMonthView() // TODO: auto, 무한 스크롤
         BrandOfMonth2View() // TODO
+          .frame(height: 400)
+          .padding(.horizontal, -20)
         PaycoNowView() // TODO
       }
       .padding(.horizontal, 20)
