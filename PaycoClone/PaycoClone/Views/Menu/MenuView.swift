@@ -1,13 +1,27 @@
 import SwiftUI
 
 struct MenuView: View {
+  @State private var itmes = Item.allCases
+  
+  let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
+  
   var body: some View {
-    Text("메뉴 8개 뷰")
+    LazyVGrid(columns: columns, spacing: 30) {
+      ForEach(itmes) { item in
+        VStack {
+          item.image
+            .scaledToFit()
+            .frame(width: 50, height: 50)
+          Text(item.rawValue)
+        }
+      }
+    }
   }
 }
 
 struct MenuView_Previews: PreviewProvider {
   static var previews: some View {
     MenuView()
+      .previewLayout(.sizeThatFits)
   }
 }
