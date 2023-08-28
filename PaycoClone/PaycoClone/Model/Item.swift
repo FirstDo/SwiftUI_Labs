@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 enum Item: String, CaseIterable, Identifiable {
-  case 송금 = "내 계좌로 송금"
+  case 송금 = "내계좌로 송금"
   case 충전 = "충전"
   case 전환 = "전환"
   case 이용 = "이용내역"

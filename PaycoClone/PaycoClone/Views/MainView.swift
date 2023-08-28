@@ -11,12 +11,12 @@ struct MainView: View {
         EventBanersView()
           .padding(.horizontal, -20)
         PointBenefitView()
-        RewardView()
+        RewardRow()
         BrandOfMonthView()
         BrandOfMonth2View()
         PaycoNowView()
       }
-      .padding(.horizontal, 20)
+      .padding(.horizontal, 10)
     }
   }
 }
