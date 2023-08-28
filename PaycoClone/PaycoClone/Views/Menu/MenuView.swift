@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MenuView: View {
-  @State private var itmes = Item.allCases
+  @State private var itmes = MenuItem.allCases
   
   let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
   
@@ -11,9 +11,9 @@ struct MenuView: View {
         VStack {
           item.image
             .scaledToFit()
-            .frame(width: 45, height: 45)
+            .frame(width: 35, height: 35)
           Text(item.rawValue)
-            .font(.callout)
+            .font(.caption2)
         }
       }
     }

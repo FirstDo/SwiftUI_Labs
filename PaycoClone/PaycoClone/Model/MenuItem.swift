@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-enum Item: String, CaseIterable, Identifiable {
+enum MenuItem: String, CaseIterable, Identifiable, Equatable {
   case 송금 = "내계좌로 송금"
   case 충전 = "충전"
   case 전환 = "전환"

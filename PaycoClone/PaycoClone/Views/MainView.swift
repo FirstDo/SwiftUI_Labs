@@ -8,15 +8,15 @@ struct MainView: View {
         CardView()
           .frame(height: 200)
         MenuView()
-        EventBanersView()
+        EventBanersView() // TODO
           .padding(.horizontal, -20)
         PointBenefitView()
         RewardRow()
-        BrandOfMonthView()
-        BrandOfMonth2View()
-        PaycoNowView()
+        BrandOfMonthView() // TODO
+        BrandOfMonth2View() // TODO
+        PaycoNowView() // TODO
       }
-      .padding(.horizontal, 10)
+      .padding(.horizontal, 20)
     }
   }
 }
