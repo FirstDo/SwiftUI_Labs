@@ -13,11 +13,11 @@ struct ThirdPageView: View {
         
         Spacer()
         
-        Image("applePark")
+        Image(systemName: "flag.checkered.2.crossed")
           .resizable()
           .scaledToFill()
+          .foregroundStyle(.blue, .white)
           .frame(width: 150)
-          .cornerRadius(40)
       }
       
       Spacer()

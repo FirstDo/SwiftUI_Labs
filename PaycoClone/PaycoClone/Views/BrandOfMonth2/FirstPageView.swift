@@ -13,11 +13,11 @@ struct FirstPageView: View {
           
           Spacer()
           
-          Image("applePark")
+          Image(systemName: "house")
             .resizable()
-            .scaledToFill()
+            .scaledToFit()
+            .foregroundColor(.red)
             .frame(width: 150)
-            .cornerRadius(40)
         }
         
         Spacer()
