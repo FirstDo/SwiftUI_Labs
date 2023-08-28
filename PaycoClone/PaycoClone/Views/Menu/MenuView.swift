@@ -11,8 +11,9 @@ struct MenuView: View {
         VStack {
           item.image
             .scaledToFit()
-            .frame(width: 50, height: 50)
+            .frame(width: 45, height: 45)
           Text(item.rawValue)
+            .font(.callout)
         }
       }
     }
