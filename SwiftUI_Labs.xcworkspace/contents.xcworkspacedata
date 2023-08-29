@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:SalMal_EX/SalMal_EX.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:PaycoClone/PaycoClone.xcodeproj">
    </FileRef>
    <FileRef

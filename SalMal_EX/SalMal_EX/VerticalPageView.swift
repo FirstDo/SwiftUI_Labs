@@ -1,0 +1,83 @@
+import SwiftUI
+
+struct VerticalPageView: View {
+  @State var items: [Color] = [.red, .blue, .green, .yellow, .black, .orange, .cyan, .mint, .brown]
+
+  
+  var body: some View {
+    ZStack {
+      Color.gray.opacity(0.1)
+      
+      VStack {
+        PageView(items: $items, spacing: 20)
+          .frame(height: 500)
+          .padding(.horizontal)
+        
+        Button("Add") {
+          items.append(contentsOf: [.green, .clear, .yellow, .indigo, .pink])
+        }
+        .buttonStyle(.borderedProminent)
+      }
+    }
+  }
+}
+
+struct PageView: View {
+  @Binding var items: [Color]
+  let spacing: CGFloat
+  @State var currentIndex = 0
+  @GestureState var dragOffset: CGFloat = 0
+  
+  var body: some View {
+    GeometryReader { proxy in
+
+      let height = proxy.size.height
+      let offsetY = CGFloat(currentIndex) * -height + dragOffset + CGFloat(currentIndex) * -spacing
+      
+      ScrollView(showsIndicators: false) {
+        VStack(spacing: spacing) {
+          ForEach(0..<items.count, id: \.self) { index in
+            items[index]
+              .frame(height: height)
+              .frame(maxWidth: .infinity)
+              .cornerRadius(20)
+              .onAppear {
+                print(index)
+              }
+          }
+          .contentShape(Rectangle())
+        }
+        .offset(y: offsetY)
+        .animation(.default, value: offsetY)
+        .gesture(
+          DragGesture()
+            .updating($dragOffset) { value, state, _ in
+              state = value.translation.height
+            }
+            .onEnded { value in
+              let offsetY = value.translation.height
+
+
+              if offsetY > 0 {
+                currentIndex = max(0, currentIndex - 1)
+              } else {
+                currentIndex = min(items.count - 1, currentIndex + 1)
+              }
+            }
+        )
+        .onChange(of: currentIndex) { newValue in
+          if currentIndex == items.count - 2 {
+            items.append(items.randomElement()!)
+          }
+        }
+      }
+      .scrollDisabled(true)
+    }
+  }
+}
+
+struct ContentView_Previews: PreviewProvider {
+  static var previews: some View {
+    VerticalPageView()
+  }
+}
