@@ -1,7 +1,9 @@
 import SwiftUI
 
 struct BrandOfMonthView: View {
-  @State private var items = PointItem.allCases
+  @State private var items = PointItem.allCases + PointItem.allCases
+  @State private var xOffset: CGFloat = 0
+  @State private var timer: Timer?
   
   var body: some View {
     ZStack(alignment: .topTrailing) {
@@ -13,19 +15,26 @@ struct BrandOfMonthView: View {
         }
         .bold()
         .font(.title2)
-        
+
         ScrollView(.horizontal, showsIndicators: false) {
           LazyHStack(alignment: .bottom) {
-            ForEach(items) { item in
+            ForEach(0..<items.count, id: \.self) { index in
+              let _ = print(items.count)
               VStack {
-                if item == .애플 || item == .테슬라 {
+                if items[index] == .애플 || items[index] == .테슬라 {
                   NewLabel()
                 }
-                Image(item.logoName)
+                
+                Image(items[index].logoName)
                   .resizable()
                   .frame(width: 70, height: 70)
                   .clipShape(Circle())
                   .overlay(Circle().stroke(Color.white))
+                  .onAppear {
+                    if index == items.count - 2 {
+                      items.append(contentsOf: PointItem.allCases)
+                    }
+                  }
               }
             }
           }

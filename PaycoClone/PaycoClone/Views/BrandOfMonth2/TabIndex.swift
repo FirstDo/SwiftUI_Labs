@@ -6,7 +6,7 @@ struct TabIndex: View {
   
   var body: some View {
     HStack {
-      ForEach(0..<count) { index in
+      ForEach(1..<count+1) { index in
         Capsule()
           .fill(index == selection ? .black: .secondary.opacity(0.1))
           .frame(width: index == selection ? 24 : 6, height: 6)

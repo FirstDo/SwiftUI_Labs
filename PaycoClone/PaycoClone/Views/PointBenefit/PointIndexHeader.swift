@@ -4,7 +4,7 @@ struct PointIndexHeader: View {
   let items = ["전체", "온라인", "오프라인", "New"]
   @State private var selection = "전체"
   var body: some View {
-    ScrollView {
+    ScrollView(.horizontal, showsIndicators: false) {
       HStack(spacing: 15) {
         ForEach(items, id: \.self) { item in
           Text(item)
