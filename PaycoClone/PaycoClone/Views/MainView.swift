@@ -23,7 +23,7 @@ struct MainView: View {
         RewardRow()
         BrandOfMonthView() // TODO: auto, 무한 스크롤
         BrandOfMonth2View()
-          .frame(height: 400)
+          .frame(height: 450)
           .padding(.horizontal, -20)
         PaycoNowView()
           .padding(.bottom, 20)

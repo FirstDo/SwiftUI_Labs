@@ -1,9 +1,10 @@
 import SwiftUI
 
 struct BrandOfMonthView: View {
-  @State private var items = PointItem.allCases + PointItem.allCases
   @State private var xOffset: CGFloat = 0
   @State private var timer: Timer?
+  
+  @State private var offsetX: CGFloat = .zero
   
   var body: some View {
     ZStack(alignment: .topTrailing) {
@@ -15,24 +16,10 @@ struct BrandOfMonthView: View {
         }
         .bold()
         .font(.title2)
-
-        ScrollView(.horizontal, showsIndicators: false) {
-          HStack(alignment: .bottom) {
-            ForEach(0..<items.count, id: \.self) { index in
-              VStack {
-                if items[index] == .애플 || items[index] == .테슬라 {
-                  NewLabel()
-                }
-                
-                Image(items[index].logoName)
-                  .resizable()
-                  .frame(width: 70, height: 70)
-                  .clipShape(Circle())
-                  .overlay(Circle().stroke(Color.white))
-              }
-            }
-          }
-        }
+        
+        BrandsView()
+          .frame(maxWidth: .infinity)
+          .frame(height: 150)
       }
       .paycoBackground()
       

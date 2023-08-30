@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct CardView: View {
+  @State private var degree: Double = 10
+  
   var body: some View {
     ZStack(alignment: .topTrailing) {
       VStack(alignment: .leading, spacing: 0) {
@@ -45,6 +47,12 @@ struct CardView: View {
         .scaledToFit()
         .frame(width: 150, height: 150)
         .offset(x: -20, y: -20)
+        .shadow(color: .black.opacity(0.3), radius: 3, y: 5)
+        .rotation3DEffect(.degrees(degree), axis: (x: 0.1, y: -0.8, z: 0))
+        .animation(.spring(response: 2, dampingFraction: 0.2), value: degree)
+    }
+    .onReceive(Timer.publish(every: 2, on: .current, in: .default).autoconnect()) { _ in
+      degree = degree == 10 ? -10 : 10
     }
   }
 }
