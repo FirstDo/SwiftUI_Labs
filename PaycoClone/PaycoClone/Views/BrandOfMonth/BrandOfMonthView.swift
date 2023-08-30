@@ -17,9 +17,8 @@ struct BrandOfMonthView: View {
         .font(.title2)
 
         ScrollView(.horizontal, showsIndicators: false) {
-          LazyHStack(alignment: .bottom) {
+          HStack(alignment: .bottom) {
             ForEach(0..<items.count, id: \.self) { index in
-              let _ = print(items.count)
               VStack {
                 if items[index] == .애플 || items[index] == .테슬라 {
                   NewLabel()
@@ -30,11 +29,6 @@ struct BrandOfMonthView: View {
                   .frame(width: 70, height: 70)
                   .clipShape(Circle())
                   .overlay(Circle().stroke(Color.white))
-                  .onAppear {
-                    if index == items.count - 2 {
-                      items.append(contentsOf: PointItem.allCases)
-                    }
-                  }
               }
             }
           }

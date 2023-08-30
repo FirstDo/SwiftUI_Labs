@@ -9,21 +9,15 @@ struct MainView: View {
           .frame(height: 200)
         MenuView()
         
-      EventBanersView<ItemView>(
-          pageCount: EventItem.allCases.count,
-          visibleEdgeSpace: 10,
+        EventBanersView<ItemView>(
+          pageCount: EventItem.carousels.count,
+          sideSpacing: 10,
           spacing: 10
         ) {
-          ItemView(color: EventItem.allCases[$0].color)
+          ItemView(color: EventItem.carousels[$0].color)
         }
         .frame(height: 150)
         .padding(.horizontal, -20)
-        
-        List {
-            EmptyView()
-            
-        }
-  
         
         PointBenefitView()
         RewardRow()

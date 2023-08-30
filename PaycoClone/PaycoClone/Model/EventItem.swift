@@ -6,8 +6,6 @@ enum EventItem: String, Identifiable, CaseIterable {
   case blue = "blue"
   case black = "black"
   case orange = "orange"
-  case green = "green"
-  case purple = "purple"
   
   var id: UUID {
     return UUID()
@@ -23,14 +21,10 @@ enum EventItem: String, Identifiable, CaseIterable {
       return .black
     case .orange:
       return .orange
-    case .green:
-      return .green
-    case .purple:
-      return .purple
     }
   }
   
   static var carousels: [Self] {
-    [.purple] + Self.allCases + [.red]
+    [.orange] + Self.allCases + [.red]
   }
 }
