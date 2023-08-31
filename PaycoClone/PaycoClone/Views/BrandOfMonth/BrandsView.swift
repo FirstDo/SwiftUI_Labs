@@ -2,7 +2,8 @@ import SwiftUI
 
 struct BrandsView: View {
   
-  @State private var items: [PointItem] = PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases
+  @State private var items: [PointItem] = PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases + PointItem.allCases
+  
   @State private var offsetX: CGFloat = .zero
 
   var body: some View {
@@ -37,8 +38,8 @@ struct BrandsView: View {
         offsetX -= 0.2
       }
       .onAppear {
-        for i in 1...10 {
-          proxy.scrollTo(50 * i)
+        for i in 1...50 {
+          proxy.scrollTo(10 * i)
         }
       }
     }
