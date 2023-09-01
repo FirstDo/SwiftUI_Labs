@@ -4,8 +4,9 @@ import SwiftUI
 struct SalMal_EXApp: App {
     var body: some Scene {
         WindowGroup {
-            VerticalPageView()
+//            VerticalPageView()
 //          DragExampleView()
+          ContentView()
         }
     }
 }
