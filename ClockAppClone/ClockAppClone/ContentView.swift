@@ -4,7 +4,10 @@ struct ContentView: View {
   var body: some View {
     NavigationStack {
       TabView {
-        WorldClockView()
+        WorldClockView(
+          store: .init(initialState: .init()) {
+          WorldClockCore()
+        })
           .tabItem {
             Label("세계 시계", systemImage: "globe")
           }
