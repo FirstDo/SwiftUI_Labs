@@ -4,26 +4,39 @@ import ComposableArchitecture
 struct WorldClockCore: Reducer {
   struct State: Equatable {
     var items: [WorldClockItem] = [.서울]
+    @PresentationState var selectCountryState: WorldClockSelectCore.State?
   }
   
   enum Action: Equatable {
     case deleteItem(target: IndexSet)
     case moveItem(from: IndexSet, to: Int)
-    case plusItem
+    case plusTapped
+    case selectAction(PresentationAction<WorldClockSelectCore.Action>)
   }
   
-  func reduce(into state: inout State, action: Action) -> Effect<Action> {
-    switch action {
-    case let .deleteItem(indices):
-      state.items.remove(atOffsets: indices)
-    case let .moveItem(from, to):
-      state.items.move(fromOffsets: from, toOffset: to)
-    case .plusItem:
-      break
-    default:
-      break
+  var body: some ReducerOf<Self> {
+    Reduce { state, action in
+      switch action {
+      case let .deleteItem(indices):
+        state.items.remove(atOffsets: indices)
+      case let .moveItem(from, to):
+        state.items.move(fromOffsets: from, toOffset: to)
+      case .plusTapped:
+        let items = Array(Set(WorldClockItem.allCases).subtracting(state.items))
+          .sorted { $0.countryName < $1.countryName }
+        state.selectCountryState = .init(items: items)
+      case let .selectAction(.presented(.delegate(.addCity(item)))):
+        state.items.append(item)
+        return .none
+        
+      default:
+        break
+      }
+      return .none
     }
-    return .none
+    .ifLet(\.$selectCountryState, action: /Action.selectAction) {
+      WorldClockSelectCore()
+    }
   }
 }
 
@@ -52,20 +65,15 @@ struct WorldClockView: View {
         .onDelete { indexSet in
           store.send(.deleteItem(target: indexSet))
         }
-        .listRowBackground(Color.black)
         .listRowSeparatorTint(.gray.opacity(0.7))
-        if viewStore.items.isEmpty {
-          Text("")
-            .listRowBackground(Color.black)
-        }
       }
       .listStyle(.inset)
     }
-    .background(Color.black)
-    .scrollContentBackground(.hidden)
+    .sheet(store: store.scope(state: \.$selectCountryState, action: { .selectAction($0) })) { subStore in
+      WorldClockSelectView(store: subStore)
+    }
     .navigationTitle("세계 시계")
     .navigationBarTitleDisplayMode(.large)
-    .toolbarColorScheme(.dark, for: .navigationBar)
     .toolbar {
       ToolbarItem(placement: .navigationBarLeading) {
         EditButton()
@@ -74,7 +82,7 @@ struct WorldClockView: View {
       
       ToolbarItem(placement: .navigationBarTrailing) {
         NavigationLink(">>") {
-          Color.white
+          Color.primary
             .ignoresSafeArea()
             .toolbar(.hidden, for: .tabBar)
         }
@@ -83,7 +91,7 @@ struct WorldClockView: View {
       
       ToolbarItem(placement: .navigationBarTrailing) {
         Button {
-          
+          store.send(.plusTapped)
         } label: {
           Image(systemName: "plus")
             .foregroundColor(.orange)
@@ -98,6 +106,7 @@ struct WorldClockView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationStack {
       WorldClockView()
+        .preferredColorScheme(.dark)
     }
   }
 }

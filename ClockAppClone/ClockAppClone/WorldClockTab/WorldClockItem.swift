@@ -11,6 +11,7 @@ enum WorldClockItem: Identifiable, Equatable, CaseIterable {
   case 두알라
   case 레드우드시티
   case 루안다
+  case 마닐라
   
   var id: String {
     return String(describing: self)
@@ -42,6 +43,8 @@ enum WorldClockItem: Identifiable, Equatable, CaseIterable {
       return "미국"
     case .루안다:
       return "앙골라"
+    case .마닐라:
+      return "필리핀"
     }
   }
   

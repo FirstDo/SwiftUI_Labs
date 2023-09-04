@@ -9,5 +9,6 @@ struct StopWatchView: View {
 struct StopWatchView_Previews: PreviewProvider {
   static var previews: some View {
     StopWatchView()
+      .preferredColorScheme(.dark)
   }
 }

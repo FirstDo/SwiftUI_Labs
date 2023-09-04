@@ -9,5 +9,6 @@ struct AlarmView: View {
 struct AlarmView_Previews: PreviewProvider {
   static var previews: some View {
     AlarmView()
+      .preferredColorScheme(.dark)
   }
 }

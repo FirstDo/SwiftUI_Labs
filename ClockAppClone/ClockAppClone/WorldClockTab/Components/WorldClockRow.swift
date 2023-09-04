@@ -39,5 +39,6 @@ struct WorldClockRow_Previews: PreviewProvider {
     }
     .background(Color.black)
     .previewLayout(.sizeThatFits)
+    .preferredColorScheme(.dark)
   }
 }

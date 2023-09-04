@@ -7,25 +7,24 @@ struct SearchView: View {
     HStack {
       Image(systemName: "magnifyingglass")
         .foregroundColor(.gray.opacity(0.7))
-      ZStack(alignment: .trailing) {
-        TextField("검색", text: $text)
-          .tint(.orange)
-          .foregroundColor(.white)
-        
-        if text.isEmpty == false {
-          Button {
-            text = ""
-          } label: {
-            Image(systemName: "xmark.circle.fill")
-              .foregroundColor(.white)
-          }
+      
+      TextField("검색", text: $text)
+        .tint(.orange)
+        .foregroundColor(.white)
+      
+      if text.isEmpty == false {
+        Button {
+          text = ""
+        } label: {
+          Image(systemName: "xmark.circle.fill")
+            .foregroundColor(.white)
         }
       }
     }
     .padding(4)
     .background(
       RoundedRectangle(cornerRadius: 8)
-        .fill(.black.opacity(0.3))
+        .fill(.gray.opacity(0.3))
     )
   }
 }
@@ -37,5 +36,6 @@ struct SearchView_Previews: PreviewProvider {
       SearchView(text: .constant(""))
     }
     .padding()
+    .preferredColorScheme(.dark)
   }
 }
