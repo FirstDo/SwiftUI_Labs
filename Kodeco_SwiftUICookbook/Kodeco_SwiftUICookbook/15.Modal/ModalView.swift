@@ -1,36 +1,42 @@
 import SwiftUI
 
-struct ChildView: View {
-  @Environment(\.dismiss) var dismiss
+struct Product: Identifiable {
+  let name: String
+  let price: Int
+  
+  var id: String { return name }
+}
+
+struct ProductDetailView: View {
+  let product: Product
   
   var body: some View {
     VStack {
-      Text("This is a modal view")
-      Button("Dismiss") {
-        dismiss()
-      }
+      Text(product.name)
+        .font(.title)
+      Text("Pirce: \(product.price)")
     }
   }
 }
 
 struct ModalView: View {
-  @Environment(\.dismiss) var dismiss
-  @State private var showModal = false
+  let products = [
+    Product(name: "Macbook Pro", price: 1299),
+    Product(name: "iPhone", price: 999),
+    Product(name: "AirPods", price: 199)
+  ]
+  
+  @State private var selectedProduct: Product?
+  
   var body: some View {
-    VStack {
-      Button("Dismiss Modal") {
-        dismiss()
-      }
-      Spacer()
-      Button("Show Modal") {
-        showModal = true
-      }
+    List(products) { product in
+      Text(product.name)
+        .onTapGesture {
+          selectedProduct = product
+        }
     }
-
-    .sheet(isPresented: $showModal) {
-      ChildView()
-        .presentationDetents([.medium])
-        .presentationBackgroundInteraction(.enabled(upThrough: .medium))
+    .sheet(item: $selectedProduct) { product in
+      ProductDetailView(product: product)
     }
   }
 }
