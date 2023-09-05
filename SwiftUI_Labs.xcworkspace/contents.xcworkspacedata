@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Kodeco_SwiftUICookbook/Kodeco_SwiftUICookbook.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:ClockAppClone/ClockAppClone.xcodeproj">
    </FileRef>
    <FileRef
