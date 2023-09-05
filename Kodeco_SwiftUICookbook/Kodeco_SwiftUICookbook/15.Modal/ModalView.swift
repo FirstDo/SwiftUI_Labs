@@ -1,42 +1,18 @@
 import SwiftUI
 
-struct Product: Identifiable {
-  let name: String
-  let price: Int
-  
-  var id: String { return name }
-}
-
-struct ProductDetailView: View {
-  let product: Product
-  
-  var body: some View {
-    VStack {
-      Text(product.name)
-        .font(.title)
-      Text("Pirce: \(product.price)")
-    }
-  }
-}
-
 struct ModalView: View {
-  let products = [
-    Product(name: "Macbook Pro", price: 1299),
-    Product(name: "iPhone", price: 999),
-    Product(name: "AirPods", price: 199)
-  ]
-  
-  @State private var selectedProduct: Product?
-  
+  @State private var showModal = false
+
   var body: some View {
-    List(products) { product in
-      Text(product.name)
-        .onTapGesture {
-          selectedProduct = product
-        }
+    Button("Show Modal") {
+      showModal = true
     }
-    .sheet(item: $selectedProduct) { product in
-      ProductDetailView(product: product)
+    .sheet(isPresented: $showModal) {
+      List(0..<50) {
+        Text("\($0)")
+      }
+      .presentationDetents([.medium, .large])
+      .presentationContentInteraction(.scrolls)
     }
   }
 }
