@@ -1,18 +1,22 @@
 import SwiftUI
 
 struct ModalView: View {
-  @State private var showModal = false
-
+  @State private var isShowingDialog = false
   var body: some View {
-    Button("Show Modal") {
-      showModal = true
+    Button("Empty Trash") {
+      isShowingDialog = true
     }
-    .sheet(isPresented: $showModal) {
-      List(0..<50) {
-        Text("\($0)")
+    .confirmationDialog(
+      "Are you sure you want to empty the trash?",
+      isPresented: $isShowingDialog,
+      titleVisibility: .visible
+    ) {
+      Button("Empty Trash", role: .destructive) {
+        // Handle empty trash action.
       }
-      .presentationDetents([.medium, .large])
-      .presentationContentInteraction(.scrolls)
+      Button("Cancel", role: .cancel) {
+        isShowingDialog = false
+      }
     }
   }
 }
