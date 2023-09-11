@@ -41,6 +41,7 @@ struct CSButton: View {
     Button(action: action) {
       Text(title)
         .foregroundColor(foregroundColor)
+        .font(font)
         .padding()
         .frame(maxWidth: .infinity)
         .frame(height: 64)

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ContentView: View {
+struct AlertContentView: View {
   @State var item: AlertItem?
   
   var body: some View {
@@ -33,8 +33,8 @@ struct ContentView: View {
   }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct AlertContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    AlertContentView()
   }
 }

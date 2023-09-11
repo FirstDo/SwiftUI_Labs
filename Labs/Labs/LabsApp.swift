@@ -4,7 +4,10 @@ import SwiftUI
 struct LabsApp: App {
   var body: some Scene {
     WindowGroup {
-      ContentView()
+      TabView {
+        AlertContentView()
+        ButtonContentView()
+      }
     }
   }
 }
