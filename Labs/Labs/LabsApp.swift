@@ -4,10 +4,12 @@ import SwiftUI
 struct LabsApp: App {
   var body: some Scene {
     WindowGroup {
-      TabView {
-        AlertContentView()
-        ButtonContentView()
-      }
+      CarouselView()
+      
+//      TabView {
+//        AlertContentView()
+//        ButtonContentView()
+//      }
     }
   }
 }
