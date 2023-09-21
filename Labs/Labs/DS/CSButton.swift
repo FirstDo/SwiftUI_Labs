@@ -39,7 +39,10 @@ struct CSButton: View {
   
   var body: some View {
     Button(action: action) {
-      Text(title)
+      HStack {
+        Text(title)
+        Text(title)
+      }
         .foregroundColor(foregroundColor)
         .font(font)
         .padding()

@@ -4,7 +4,8 @@ import SwiftUI
 struct LabsApp: App {
   var body: some Scene {
     WindowGroup {
-      CarouselView()
+//      CarouselView()
+      MyView()
       
 //      TabView {
 //        AlertContentView()
