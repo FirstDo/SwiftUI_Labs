@@ -27,9 +27,6 @@ final class DefaultCell: UITableViewCell {
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
-    selectionStyle = .none
-    separatorInset = .init(top: 0, left: 15, bottom: 0, right: 0)
-    
     contentView.flex.define {
       $0.addItem().justifyContent(.end).define {
         

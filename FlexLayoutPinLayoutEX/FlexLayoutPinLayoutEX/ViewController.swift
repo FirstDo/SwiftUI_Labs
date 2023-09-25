@@ -93,9 +93,13 @@ extension MainView: UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TextHeaderView") as! TextHeaderView
-    header.configure(text: HeartRate.mock[section].section)
-    return header
+    if (0...4) ~= section {
+      let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TextHeaderView") as! TextHeaderView
+      header.configure(text: HeartRate.mock[section].section)
+      return header
+    }
+    
+    return nil
   }
   
   func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

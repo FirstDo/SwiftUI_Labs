@@ -51,8 +51,6 @@ final class HeartRateCell: UITableViewCell {
 
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
-    
-    selectionStyle = .none
 
     contentView.flex.direction(.column).backgroundColor(.systemGray6).define {
       $0.addItem().marginVertical(5).padding(15).backgroundColor(.white).justifyContent(.spaceBetween).cornerRadius(12).define {

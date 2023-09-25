@@ -4,7 +4,7 @@ class TextHeaderView: UITableViewHeaderFooterView {
   
   let container = UIView()
   let label: UILabel = {
-    $0.font = .boldSystemFont(ofSize: 20)
+    $0.font = .boldSystemFont(ofSize: 22)
     $0.textColor = .label
     return $0
   }(UILabel())
@@ -32,5 +32,11 @@ class TextHeaderView: UITableViewHeaderFooterView {
   func configure(text: String) {
     self.label.text = text
     self.label.flex.markDirty()
+  }
+  
+  override func sizeThatFits(_ size: CGSize) -> CGSize {
+    container.pin.width(size.width)
+    container.flex.layout(mode: .adjustHeight)
+    return container.frame.size
   }
 }
