@@ -17,30 +17,45 @@ struct HeartRate {
     self.description = description ?? ""
   }
   
-  static var mock: [[Self]] {
+  static var mock: [(section: String, [Self])] {
     [
-      [
-        .init(title: "심박수", time: "15:30", heartRateTime: "최근", value: "74", unit: "BPM"),
-        .init(title: "심박 변이", time: "12:47", heartRateTime: "평균", value: "52", unit: "밀리초"),
-        .init(title: "휴식기 심박수", time: "12:28", value: "73", unit: "BPM"),
-      ],
+      (
+        "심장",
+        [
+          .init(title: "심박수", time: "15:30", heartRateTime: "최근", value: "74", unit: "BPM"),
+          .init(title: "심박 변이", time: "12:47", heartRateTime: "평균", value: "52", unit: "밀리초"),
+          .init(title: "휴식기 심박수", time: "12:28", value: "73", unit: "BPM"),
+        ]
+      ),
       
-      [
-        .init(title: "걷기 심박수 평균", time: "어제", value: "109", unit: "BPM"),
-      ],
+      (
+        "최근 7일",
+        [
+          .init(title: "걷기 심박수 평균", time: "어제", value: "109", unit: "BPM"),
+        ]
+      ),
       
-      [
-        .init(title: "유산소 피트니스", time: "9월 11일", value: "낮음", description: "36.8 최대산소섭취량"),
-      ],
+      (
+        "최근 30일",
+        [
+          .init(title: "유산소 피트니스", time: "9월 11일", value: "낮음", description: "36.8 최대산소섭취량"),
+        ]
+      ),
       
-      [
-        .init(title: "고 심박수 알림", time: "7월 18일",value: "1"),
-        .init(title: "심박수 회복", time: "6월 7일", value: "24", unit: "BPM"),
-      ],
+      (
+        "최근 12개월",
+        [
+          .init(title: "고 심박수 알림", time: "7월 18일",value: "1"),
+          .init(title: "심박수 회복", time: "6월 7일", value: "24", unit: "BPM"),
+        ]
+      ),
       
-      [
-        .init(title: "유산소 피트니스 알림", time: "2022년 7월", value: "1"),
-      ]
+      (
+        "이전 요약",
+        [
+          .init(title: "유산소 피트니스 알림", time: "2022년 7월", value: "1"),
+        ]
+      )
     ]
   }
 }

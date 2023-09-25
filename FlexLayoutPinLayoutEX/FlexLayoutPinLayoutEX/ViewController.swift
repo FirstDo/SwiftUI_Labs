@@ -28,6 +28,7 @@ fileprivate class MainView: UIView {
     $0.separatorStyle = .none
     $0.register(DefaultCell.self, forCellReuseIdentifier: "DefaultCell")
     $0.register(HeartRateCell.self, forCellReuseIdentifier: "HeartRateCell")
+    $0.register(TextHeaderView.self, forHeaderFooterViewReuseIdentifier: "TextHeaderView")
     
     return $0
   }(UITableView(frame: .zero, style: .insetGrouped))
@@ -78,7 +79,7 @@ extension MainView: UITableViewDataSource, UITableViewDelegate {
     switch indexPath.section {
     case 0...4:
       let cell = tableView.dequeueReusableCell(withIdentifier: "HeartRateCell", for: indexPath) as! HeartRateCell
-      cell.configure(model: HeartRate.mock[indexPath.section][indexPath.row])
+      cell.configure(model: HeartRate.mock[indexPath.section].1[indexPath.row])
       return cell
     case 5:
       let data = ["말초 관류 지수", "불규칙한 박동 알림", "심방세동 기록", "심전도(ECG)", "저심박수 알림", "혈압"]
@@ -90,6 +91,21 @@ extension MainView: UITableViewDataSource, UITableViewDelegate {
       fatalError()
     }
   }
+  
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TextHeaderView") as! TextHeaderView
+    header.configure(text: HeartRate.mock[section].section)
+    return header
+  }
+  
+  func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    guard let header = view as? TextHeaderView, (0...4) ~= section else { return }
+//    header.configure(text: HeartRate.mock[section].section)
+  }
+  
+//  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//    return 100
+//  }
 }
 
 struct MainPreview: PreviewProvider {
