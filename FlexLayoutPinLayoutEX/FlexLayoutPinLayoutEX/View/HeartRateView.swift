@@ -6,6 +6,7 @@ final class HeartRateView: UIView {
   lazy var tableview: UITableView = {
     $0.dataSource = self
     $0.delegate = self
+    $0.isScrollEnabled = false
     $0.separatorStyle = .none
     $0.register(DefaultCell.self, forCellReuseIdentifier: "DefaultCell")
     $0.register(HeartRateCell.self, forCellReuseIdentifier: "HeartRateCell")

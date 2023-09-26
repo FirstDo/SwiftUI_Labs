@@ -24,6 +24,7 @@ final class HeartRateCell: UITableViewCell {
   
   let timeLabel: UILabel = {
     $0.textColor = .gray
+    $0.font = .preferredFont(forTextStyle: .caption1)
     return $0
   }(UILabel())
   
@@ -35,7 +36,7 @@ final class HeartRateCell: UITableViewCell {
   
   let unitLabel: UILabel = {
     $0.textColor = .gray
-    $0.text = "BPM"
+    $0.font = .boldSystemFont(ofSize: 15)
     return $0
   }(UILabel())
   
@@ -72,7 +73,7 @@ final class HeartRateCell: UITableViewCell {
           $0.addItem(topLabel)
 
           $0.addItem().direction(.row).alignItems(.baseline).define {
-            $0.addItem(mainValueLabel)
+            $0.addItem(mainValueLabel).marginRight(5)
             $0.addItem(unitLabel)
           }
 

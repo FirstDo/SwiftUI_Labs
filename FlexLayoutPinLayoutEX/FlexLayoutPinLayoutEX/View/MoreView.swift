@@ -14,15 +14,19 @@ final class MoreView: UIView {
   override init(frame: CGRect) {
     super.init(frame: frame)
     
-    backgroundColor = .white
+    backgroundColor = .systemGray6
     
     addSubview(root)
-    
     root.flex.define {
+      $0.addItem(MoreInformationView())
+        .marginBottom(20)
       $0.addItem(label)
       $0.addItem(AboutHeartView(data: .mock[0]))
+        .marginBottom(10)
       $0.addItem(AboutHeartView(data: .mock[1]))
+        .marginBottom(10)
       $0.addItem(AboutHeartView(data: .mock[2]))
+        .marginBottom(10)
     }
   }
   
@@ -33,7 +37,7 @@ final class MoreView: UIView {
   override func layoutSubviews() {
     super.layoutSubviews()
     
-    root.pin.all()
+    root.pin.all(pin.safeArea)
     root.flex.layout(mode: .adjustHeight)
   }
 }

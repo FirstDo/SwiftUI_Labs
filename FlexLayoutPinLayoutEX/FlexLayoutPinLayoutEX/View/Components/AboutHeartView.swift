@@ -14,12 +14,14 @@ final class AboutHeartView: UIView {
   let titleLabel: UILabel = {
     $0.textColor = .label
     $0.font = .boldSystemFont(ofSize: 24)
+    $0.numberOfLines = 0
     return $0
   }(UILabel())
   
   let descriptionLabel: UILabel = {
     $0.textColor = .label
     $0.font = .preferredFont(forTextStyle: .body)
+    $0.numberOfLines = 0
     return $0
   }(UILabel())
   
@@ -37,7 +39,7 @@ final class AboutHeartView: UIView {
     
     addSubview(root)
     root.flex.define {
-      $0.addItem(imgView).height(200)
+      $0.addItem(imgView).height(250)
       $0.addItem().backgroundColor(.white).padding(20).define {
         $0.addItem(titleLabel)
         $0.addItem(descriptionLabel)
