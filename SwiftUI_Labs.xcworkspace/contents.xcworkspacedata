@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:FlexLayoutPinLayoutEX/FlexLayoutPinLayoutEX.xcodeproj">
+      location = "group:CoordinatorEX/CoordinatorEX.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Labs/Labs.xcodeproj">
