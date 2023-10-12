@@ -11,13 +11,32 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
-  var router: MainRouter!
 
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let windowScene = (scene as? UIWindowScene) else { return }
     window = UIWindow(windowScene: windowScene)
-    router = MainRouter(window: self.window!)
-    router.start()
+  
+    let vc1 = UIViewController()
+    vc1.view.backgroundColor = .red
+  
+    window?.rootViewController = UINavigationController(rootViewController: vc1)
+    window?.makeKeyAndVisible()
+        
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+      let navi = showModal(top: vc1)
+      
+      DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        let navi = showModal(top: navi.topViewController!)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+          let navi = showModal(top: navi.topViewController!)
+          
+          DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            let navi = showModal(top: navi.topViewController!)
+          }
+        }
+      }
+    }
   }
 
   func sceneDidDisconnect(_ scene: UIScene) { }
@@ -31,3 +50,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func sceneDidEnterBackground(_ scene: UIScene) { }
 }
 
+func showModal(top: UIViewController) -> UINavigationController {
+  let vc1 = UIViewController()
+  vc1.view.backgroundColor = .red
+  
+  let navi = UINavigationController(rootViewController: vc1)
+  top.present(navi, animated: true)
+  return navi
+}
