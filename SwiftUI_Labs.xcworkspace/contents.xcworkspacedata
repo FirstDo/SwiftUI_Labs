@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:BasicTemplate/BasicTemplate.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:CoordinatorEX/CoordinatorEX.xcodeproj">
    </FileRef>
    <FileRef
