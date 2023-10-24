@@ -50,3 +50,56 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+import SwiftUI
+
+protocol Router {
+  var stack: UINavigationController! { get set }
+}
+
+enum TransitionStyle {
+  case push
+  case modal
+}
+
+
+final class ARouter: Router {
+  unowned var stack: UINavigationController!
+  
+  // push 방식
+  init(stack: UINavigationController!) {
+    self.stack = stack
+  }
+  
+  // modal 방식
+  init() {
+    
+  }
+  
+  func pushA() {
+    
+  }
+  
+  func showA() {
+    
+  }
+}
+
+extension View {
+  var toVC: UIViewController {
+    return UIHostingController(rootView: self)
+  }
+}
+
+struct AView: View {
+  var body: some View {
+    VStack {
+      Button("push") {
+        
+      }
+      
+      Button("pop") {
+        <#code#>
+      }
+    }
+  }
+}

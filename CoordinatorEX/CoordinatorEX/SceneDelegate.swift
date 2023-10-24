@@ -11,38 +11,38 @@ import SwiftUI
 import ComposableArchitecture
 
 protocol Router: AnyObject {
-  var navi: UINavigationController? { get set }
+  var stack: UINavigationController! { get set }
 }
 
-class RouterImpl: Router {
-  weak var navi: UINavigationController?
+class ARouter: Router {
+  unowned var stack: UINavigationController!
   
-  init(navi: UINavigationController?) {
-    self.navi = navi
+  init(stack: UINavigationController!) {
+    self.stack = stack
+  }
+  
+  init() {
+    
   }
   
   func pushA() {
-    navi?.pushViewController(AView(router: self).toVC, animated: true)
+    stack?.pushViewController(AView(router: self).toVC, animated: true)
   }
   
   func modalA() {
     let nav = UINavigationController()
-    let router = RouterImpl(navi: nav)
+    let router = ARouter(stack: nav)
     let aView = AView(router: router).toVC
     nav.setViewControllers([aView], animated: true)
-    navi?.topViewController?.present(nav, animated: true)
+    stack.topViewController?.present(nav, animated: true)
   }
   
   func pop() {
-    navi?.popViewController(animated: true)
+    stack.popViewController(animated: true)
   }
   
   func popToRoot() {
-    navi?.popToRootViewController(animated: true)
-  }
-  
-  deinit {
-    print(#function)
+    stack.popToRootViewController(animated: true)
   }
 }
 
@@ -56,7 +56,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   
     let navi = UINavigationController()
     
-    let router = RouterImpl(navi: navi)
+    let router = ARouter(stack: navi)
     let vc = AView(router: router).toVC
     
     navi.setViewControllers([vc], animated: true)

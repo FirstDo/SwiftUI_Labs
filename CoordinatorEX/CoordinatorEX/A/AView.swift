@@ -13,9 +13,9 @@ struct ACore: Reducer {
     
   }
   
-  let router: RouterImpl
+  let router: ARouter
   
-  init(router: RouterImpl) {
+  init(router: ARouter) {
     self.router = router
   }
   
@@ -23,6 +23,7 @@ struct ACore: Reducer {
     case push
     case modal
     case pop
+    case popToRoot
   }
   
   func reduce(into state: inout State, action: Action) -> Effect<Action> {
@@ -33,6 +34,8 @@ struct ACore: Reducer {
       router.modalA()
     case .pop:
       router.pop()
+    case .popToRoot:
+      router.popToRoot()
     }
     return .none
   }
@@ -41,7 +44,7 @@ struct ACore: Reducer {
 struct AView: View {
   let store: StoreOf<ACore>
   
-  init(router: RouterImpl) {
+  init(router: ARouter) {
     self.store = .init(initialState: .init()) {
       ACore(router: router)
     }
@@ -58,6 +61,10 @@ struct AView: View {
     
     Button("pop") {
       store.send(.pop)
+    }
+    
+    Button("popToRoot") {
+      store.send(.popToRoot)
     }
   }
 }
