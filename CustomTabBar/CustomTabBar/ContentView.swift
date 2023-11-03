@@ -1,24 +1,49 @@
-//
-//  ContentView.swift
-//  CustomTabBar
-//
-//  Created by LS-MAC-00213 on 2023/11/03.
-//
 
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+  @State var index = 0
+  @State var showUpload = false
+  
+  var body: some View {
+    VStack {
+      
+      if index == 0 {
+        Rectangle().fill(.blue)
+      } else {
+        Rectangle().fill(.green)
+      }
+      
+      Spacer()
+      
+      CustomTabBar(index: $index) {
+        showUpload = true
+      }
+      .debug()
+      .background(.yellow)
     }
+    .fullScreenCover(isPresented: $showUpload) {
+      UploadView()
+        .ignoresSafeArea(edges: .bottom)
+    }
+  }
 }
 
 #Preview {
-    ContentView()
+  ContentView()
+}
+
+struct UploadView: View {
+  @Environment(\.dismiss) var dismiss
+  
+  var body: some View {
+    ZStack(alignment: .topTrailing) {
+      Color.black
+      
+      Button("X") {
+        dismiss()
+      }
+      .padding(40)
+    }
+  }
 }
