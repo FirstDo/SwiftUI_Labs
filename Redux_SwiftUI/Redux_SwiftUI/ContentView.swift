@@ -6,6 +6,8 @@ struct ContentView: View {
     reducer: NameReducer(dependency: .init(nameRepo: NameRepo()))
   )
   
+  private let networkManager = NetworkManager()
+  
   var body: some View {
     VStack {
       Text(store.state.name)
@@ -13,6 +15,10 @@ struct ContentView: View {
       Button("change name") {
         store.send(action: .changeName)
       }
+    }
+    .task {
+      let result = try! await networkManager.request(TodoAPI.todo(1), type: TodoResponseDTO.self)
+      print(result)
     }
   }
 }

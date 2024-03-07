@@ -4,7 +4,8 @@ import SwiftUI
 struct Redux_SwiftUIApp: App {
   var body: some Scene {
     WindowGroup {
-      ContentView()
+//      ContentView()
+      ImageListView()
     }
   }
 }
