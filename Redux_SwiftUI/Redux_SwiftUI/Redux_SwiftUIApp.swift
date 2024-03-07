@@ -1,11 +1,10 @@
-
 import SwiftUI
 
 @main
-struct CustomTabBarApp: App {
+struct Redux_SwiftUIApp: App {
   var body: some Scene {
     WindowGroup {
-      MyView()
+      ContentView()
     }
   }
 }
