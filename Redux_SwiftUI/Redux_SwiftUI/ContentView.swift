@@ -1,18 +1,25 @@
 import SwiftUI
 
 struct ContentView: View {
-  let store = AppStore(initialState: .init(), reducer: appReducer)
-  
-  init() {
-    store.dispatch(.getAnimal)
-  }
+  @StateObject var store: StoreOf<NameReducer> = .init(
+    state: .init(name: "도연"),
+    reducer: NameReducer(dependency: .init(nameRepo: NameRepo()))
+  )
   
   var body: some View {
-    AnimalView()
-      .environmentObject(store)
+    VStack {
+      Text(store.state.name)
+      
+      Button("change name") {
+        store.send(action: .changeName)
+      }
+    }
   }
 }
 
 #Preview {
-  ContentView()
+  ContentView(store: .init(
+    state: .init(name: "도연"),
+    reducer: NameReducer(dependency: .init(nameRepo: NameRepo()))
+  ))
 }
