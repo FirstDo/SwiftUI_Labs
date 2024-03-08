@@ -6,6 +6,8 @@ struct ContentView: View {
     reducer: NameReducer(dependency: .init(nameRepo: NameRepo()))
   )
   
+  @EnvironmentObject var coordinator: AppCoordinator
+  
   private let networkManager = NetworkManager()
   
   var body: some View {
@@ -14,6 +16,10 @@ struct ContentView: View {
       
       Button("change name") {
         store.send(action: .changeName)
+      }
+      
+      Button("Back") {
+        coordinator.path.removeLast()
       }
     }
     .task {
