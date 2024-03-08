@@ -11,7 +11,10 @@ enum AppError: Error {
 }
 
 protocol Responsable: Decodable {
+  associatedtype Entity
+  
   static var mock: Self { get }
+  var toDomain: Entity { get }
 }
 
 protocol NetworkManagerProtocol {

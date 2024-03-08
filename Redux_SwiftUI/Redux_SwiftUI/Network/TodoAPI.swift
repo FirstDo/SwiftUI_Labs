@@ -29,6 +29,13 @@ extension TodoAPI: TargetType {
   }
 }
 
+struct TodoEntity {
+  let userId: Int
+  let id: Int
+  let title: String
+  let completed: Bool
+}
+
 struct TodoResponseDTO: Responsable {
   let userId: Int
   let id: Int
@@ -37,5 +44,14 @@ struct TodoResponseDTO: Responsable {
   
   static var mock: TodoResponseDTO {
     .init(userId: 1, id: 1, title: "delectus aut autem", completed: false)
+  }
+  
+  var toDomain: TodoEntity {
+    .init(
+      userId: self.userId,
+      id: self.id,
+      title: self.title,
+      completed: self.completed
+    )
   }
 }

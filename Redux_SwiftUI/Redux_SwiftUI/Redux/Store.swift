@@ -4,7 +4,8 @@ typealias StoreOf<R: Reducer> = Store<R.State, R.Action>
 
 final class Store<State, Action>: ObservableObject {
   @Published private(set) var state: State
-  private var reducer: any Reducer<State, Action>
+  
+  private let reducer: any Reducer<State, Action>
   
   init(state: State, reducer: any Reducer<State, Action>) {
     self.state = state
