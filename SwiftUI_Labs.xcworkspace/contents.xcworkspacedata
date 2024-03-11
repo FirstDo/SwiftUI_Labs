@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Chart_Exercise/Chart_Exercise.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Redux_SwiftUI/Redux_SwiftUI.xcodeproj">
    </FileRef>
    <FileRef
